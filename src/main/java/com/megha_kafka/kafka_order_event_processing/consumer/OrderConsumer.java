@@ -16,6 +16,13 @@ public class OrderConsumer {
 
         log.info("Received Order: {}", order.getOrderId());
 
+        if (order.getQuantity() <= 0 ||
+                order.getAmount() <= 0) {
+
+            log.error("Invalid Order Received");
+            return;
+        }
+
         log.info("Validating Order...");
 
         log.info("Generating Invoice...");
